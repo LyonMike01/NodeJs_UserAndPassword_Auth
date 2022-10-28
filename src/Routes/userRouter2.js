@@ -9,7 +9,14 @@ const {
         } = require  ("../control/lvl1/app");
 
 
-        const { regUser, secrets, seeLogin } = require  ("../control/lvl5.1/app");
+        const { regUser, 
+                secrets, 
+                seeLogin, 
+                forgetPassword, 
+                verifyToken,
+                resetPassword,
+                getMail
+                } = require  ("../control/lvl5.1/app");
         
 // profile routes
 
@@ -21,8 +28,15 @@ router.get("/login", login);
 
 router.get("/secret", secrets);
 
-
 router.post("/login", seeLogin);
+
+router.get("/forget_password", forgetPassword);
+
+router.post("/forget_password", getMail);
+
+router.get("/reset/:id/:token", verifyToken);
+
+router.post("/reset/:id/:token", resetPassword)
 
 
 module.exports =  {router};
